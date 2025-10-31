@@ -119,6 +119,31 @@ export default function App() {
     return lines.join("\n");
   }, [title, description, robots, keywords, canonical, url, schemaLd, pageType]);
 
+  const highlightedTagString = useMemo(() => {
+    let code = escapeHtml(tagString);
+    const parts = code.split(/(&lt;script type=&quot;application\/ld\+json&quot;&gt;[\s\S]*?&lt;\/script&gt;)/g);
+
+    const processedParts = parts.map(part => {
+      if (part.startsWith('&lt;script')) {
+        let highlightedPart = part.replace(/&lt;(\/?script)&gt;/g, '&lt;<span class="text-red-500">$1</span>&gt;')
+                                  .replace(/ ([\w-]+)=/g, ' <span class="text-blue-500">$1</span>=')
+                                  .replace(/(&quot;application\/ld\+json&quot;)/g, '<span class="text-green-500">$1</span>');
+        highlightedPart = highlightedPart.replace(/(&quot;[a-zA-Z@][\w@]*&quot;):/g, '<span class="text-purple-500">$1</span>:');
+        highlightedPart = highlightedPart.replace(/:\s*(&quot;.*?&quot;)/g, (match, p1) => `: <span class="text-green-500">${p1}</span>`);
+        return highlightedPart;
+      } else if (part) {
+        let highlightedPart = part;
+        highlightedPart = highlightedPart.replace(/&lt;(\/?[\w-]+)/g, '&lt;<span class="text-red-500">$1</span>');
+        highlightedPart = highlightedPart.replace(/ ([\w-]+)=/g, ' <span class="text-blue-500">$1</span>=');
+        highlightedPart = highlightedPart.replace(/(&quot;.*?&quot;)/g, '<span class="text-green-500">$1</span>');
+        return highlightedPart;
+      }
+      return part;
+    });
+
+    return processedParts.join('');
+  }, [tagString]);
+
   // --- Clipboard helpers ---
   async function writeClipboard(text: string) {
     const secure = typeof window !== "undefined" && window.isSecureContext;
@@ -262,8 +287,8 @@ export default function App() {
                 <span>API Papan Klip diblokir. Silakan gunakan dialog Salin Manual.</span>
               </div>
             )}
-            <pre className="max-h-[520px] overflow-auto rounded-xl bg-gray-900 text-gray-200 p-4 text-xs leading-relaxed">
-              <code>{tagString}</code>
+            <pre className="max-h-[520px] overflow-auto rounded-xl bg-white border border-gray-200 p-4 text-xs leading-relaxed shadow-inner">
+              <code dangerouslySetInnerHTML={{ __html: highlightedTagString }} />
             </pre>
           </div>
 
