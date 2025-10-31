@@ -1,0 +1,5 @@
+{
+  "name": "SEO Meta Tag Generator",
+  "description": "An AI-ready SEO meta tag generator that creates title, description, keywords, robots, canonical, Open Graph, and JSON-LD schema markup for web pages. Includes dynamic FAQ management and a clipboard-safe copy feature.",
+  "requestFramePermissions": []
+}
