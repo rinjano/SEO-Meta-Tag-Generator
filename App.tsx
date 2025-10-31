@@ -208,35 +208,35 @@ export default function App() {
       <main className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Left: Form */}
         <div className="space-y-6 rounded-2xl border bg-white p-6 shadow-sm">
-          <SelectField label="Page Type" tooltip="Determines the JSON-LD schema and og:type." value={pageType} onChange={setPageType} options={["WebPage", "Service", "Article"]} />
-          <TextInput label="Brand" tooltip="The name of the organization or brand." value={brand} onChange={setBrand} placeholder="Your Brand Name"/>
-          <TextInput label="Service or Page Name" tooltip="The main name of the service or page." value={serviceName} onChange={setServiceName} placeholder="Page Name" />
-          <TextInput label="Title" tooltip="The main SEO title for the page." value={title} onChange={setTitle} placeholder="Main Page Title | Your Brand Name" helper="Use hyphens (-) as separators for readability." />
-          <TextArea label="Description" tooltip="Meta description for search results and social previews." value={description} onChange={setDescription} placeholder="A brief description of this page. Explain what visitors will find here." rows={3} />
-          <TextInput label="URL" tooltip="The final URL of the page." value={url} onChange={setUrl} placeholder="https://www.yourdomain.com/page"/>
-          <TextInput label="Canonical" tooltip="The primary URL to prevent duplicate content." value={canonical} onChange={setCanonical} placeholder="https://www.yourdomain.com/page"/>
+          <SelectField label="Tipe Halaman" tooltip="Menentukan skema JSON-LD dan og:type." value={pageType} onChange={setPageType} options={["WebPage", "Service", "Article"]} />
+          <TextInput label="Brand" tooltip="Nama organisasi atau brand." value={brand} onChange={setBrand} placeholder="Nama Brand Anda"/>
+          <TextInput label="Nama Layanan atau Halaman" tooltip="Nama utama dari layanan atau halaman." value={serviceName} onChange={setServiceName} placeholder="Nama Halaman" />
+          <TextInput label="Judul" tooltip="Judul SEO utama untuk halaman." value={title} onChange={setTitle} placeholder="Judul Utama Halaman | Nama Brand Anda" helper="Gunakan tanda hubung (-) sebagai pemisah agar mudah dibaca." />
+          <TextArea label="Deskripsi" tooltip="Deskripsi meta untuk hasil pencarian dan pratinjau sosial." value={description} onChange={setDescription} placeholder="Deskripsi singkat tentang halaman ini. Jelaskan apa yang akan ditemukan pengunjung di sini." rows={3} />
+          <TextInput label="URL" tooltip="URL final dari halaman." value={url} onChange={setUrl} placeholder="https://www.domainanda.com/halaman"/>
+          <TextInput label="Canonical" tooltip="URL utama untuk mencegah konten duplikat." value={canonical} onChange={setCanonical} placeholder="https://www.domainanda.com/halaman"/>
 
           <fieldset className="rounded-lg border p-4">
-            <legend className="px-1 text-sm font-medium">Robots Control</legend>
+            <legend className="px-1 text-sm font-medium">Kontrol Robot</legend>
             <div className="flex items-center gap-6 pt-2">
-              <Toggle label="index" tooltip="Allow search engines to index this page." checked={robotsIndex} onChange={setRobotsIndex} />
-              <Toggle label="follow" tooltip="Allow crawlers to follow links on this page." checked={robotsFollow} onChange={setRobotsFollow} />
+              <Toggle label="index" tooltip="Izinkan mesin pencari untuk mengindeks halaman ini." checked={robotsIndex} onChange={setRobotsIndex} />
+              <Toggle label="follow" tooltip="Izinkan crawler untuk mengikuti tautan di halaman ini." checked={robotsFollow} onChange={setRobotsFollow} />
             </div>
           </fieldset>
 
-          <TextInput label="Meta Keywords (Optional)" tooltip="Still used by some AI crawlers and internal searches." value={keywords} onChange={setKeywords} placeholder="keyword 1, keyword 2, keyword 3" helper="Separate with commas."/>
+          <TextInput label="Kata Kunci Meta (Opsional)" tooltip="Masih digunakan oleh beberapa crawler AI dan pencarian internal." value={keywords} onChange={setKeywords} placeholder="kata kunci 1, kata kunci 2, kata kunci 3" helper="Pisahkan dengan koma."/>
 
           <fieldset className="space-y-2 rounded-lg border p-4">
             <legend className="px-1 text-sm font-medium flex items-center">
-                FAQ List
-                <Tooltip text="Manage questions and answers for the FAQPage JSON-LD schema." />
+                Daftar FAQ
+                <Tooltip text="Kelola pertanyaan dan jawaban untuk skema JSON-LD FAQPage." />
             </legend>
             <div className="space-y-3">
               {faqList.map((faq, idx) => (
                 <FAQItem key={idx} index={idx} faq={faq} onChange={updateFAQ} onDelete={deleteFAQ} />
               ))}
               <button onClick={addFAQ} className="flex items-center gap-2 rounded-full border bg-gray-100 hover:bg-gray-200 px-3 py-1.5 text-sm shadow-sm transition-colors">
-                <Plus size={16} /> Add Question
+                <Plus size={16} /> Tambah Pertanyaan
               </button>
             </div>
           </fieldset>
@@ -250,17 +250,17 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <button onClick={onCopy} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium shadow-sm transition-colors ${copyStatus === 'success' ? 'bg-green-100 text-green-700' : 'bg-white border hover:bg-gray-50'}`}>
                   {copyStatus === "success" ? <ClipboardCheck className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
-                  {copyStatus === "success" ? "Copied!" : "Copy"}
+                  {copyStatus === "success" ? "Disalin!" : "Salin"}
                 </button>
-                <button onClick={() => setShowManualCopy(true)} className="rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">Manual Copy</button>
-                <button onClick={downloadFile} className="rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">Download</button>
+                <button onClick={() => setShowManualCopy(true)} className="rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">Salin Manual</button>
+                <button onClick={downloadFile} className="rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-gray-50 transition-colors">Unduh</button>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mb-3">Copy code dibawah ini dan pastekan di antara tag <code>&lt;head&gt;</code>...<code>&lt;/head&gt;</code></p>
+            <p className="text-xs text-gray-500 mb-3">Salin kode di bawah ini dan tempel di antara tag <code>&lt;head&gt;</code>...<code>&lt;/head&gt;</code></p>
             {copyStatus === "error" && (
               <div className="mb-2 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 p-2 text-xs text-amber-800">
                 <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                <span>Clipboard API is blocked. Please use the Manual Copy dialog.</span>
+                <span>API Papan Klip diblokir. Silakan gunakan dialog Salin Manual.</span>
               </div>
             )}
             <pre className="max-h-[520px] overflow-auto rounded-xl bg-gray-900 text-gray-200 p-4 text-xs leading-relaxed">
@@ -271,13 +271,13 @@ export default function App() {
           <div className="rounded-2xl border bg-white p-4 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-sm font-semibold">Unit Tests</h3>
-              <span className="text-xs text-gray-500">Auto run on change</span>
+              <span className="text-xs text-gray-500">Dijalankan otomatis saat ada perubahan</span>
             </div>
             <ul className="space-y-1 text-xs">
               {tests.map((t, i) => (
                 <li key={i} className="flex items-center justify-between rounded-lg border bg-gray-50 px-2 py-1.5">
                   <span className="text-gray-700">{t.name}</span>
-                  <span className={`font-bold ${t.pass ? "text-green-600" : "text-red-600"}`}>{t.pass ? "PASS" : "FAIL"}</span>
+                  <span className={`font-bold ${t.pass ? "text-green-600" : "text-red-600"}`}>{t.pass ? "LULUS" : "GAGAL"}</span>
                 </li>
               ))}
             </ul>
@@ -290,10 +290,10 @@ export default function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm" onClick={() => setShowManualCopy(false)}>
           <div className="w-full max-w-3xl rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-3 flex items-center justify-between">
-              <h4 className="text-lg font-semibold">Manual Copy</h4>
-              <button onClick={() => setShowManualCopy(false)} className="rounded-full border px-3 py-1 text-sm hover:bg-gray-100">Close</button>
+              <h4 className="text-lg font-semibold">Salin Manual</h4>
+              <button onClick={() => setShowManualCopy(false)} className="rounded-full border px-3 py-1 text-sm hover:bg-gray-100">Tutup</button>
             </div>
-            <p className="mb-2 text-sm text-gray-600">Select all text (Ctrl/Cmd + A) and copy (Ctrl/Cmd + C).</p>
+            <p className="mb-2 text-sm text-gray-600">Pilih semua teks (Ctrl/Cmd + A) dan salin (Ctrl/Cmd + C).</p>
             <textarea ref={manualCopyRef} className="h-64 w-full rounded-xl border bg-gray-50 p-2 text-xs" value={tagString} readOnly />
           </div>
         </div>

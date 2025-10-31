@@ -17,24 +17,24 @@ const FAQItem: React.FC<FAQItemProps> = ({ index, faq, onChange, onDelete }) => 
     <div className="rounded-2xl border border-gray-200 bg-gray-50 p-3">
       <div className="mb-2 flex items-center justify-between">
         <p className="text-sm font-medium text-gray-900">FAQ {index + 1}</p>
-        <button aria-label="Delete FAQ" onClick={() => onDelete(index)} className="text-red-600 hover:text-red-700">
+        <button aria-label="Hapus FAQ" onClick={() => onDelete(index)} className="text-red-600 hover:text-red-700">
           <Trash2 size={16} />
         </button>
       </div>
       <div className="space-y-2">
         <TextInput
-          label="Question"
-          tooltip="Fill with frequently asked questions."
+          label="Pertanyaan"
+          tooltip="Isi dengan pertanyaan yang sering diajukan."
           value={faq.q}
           onChange={(val) => onChange(index, { ...faq, q: val })}
-          placeholder="Example: What is the main feature?"
+          placeholder="Contoh: Apa fitur utamanya?"
         />
         <TextArea
-          label="Answer"
-          tooltip="A short, clear, and factual answer."
+          label="Jawaban"
+          tooltip="Jawaban yang singkat, jelas, dan faktual."
           value={faq.a}
           onChange={(val) => onChange(index, { ...faq, a: val })}
-          placeholder="Example: The main feature is X, which helps you with Y."
+          placeholder="Contoh: Fitur utamanya adalah X, yang membantu Anda dengan Y."
           rows={3}
         />
       </div>

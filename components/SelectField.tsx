@@ -18,9 +18,9 @@ interface SelectFieldProps {
 const SelectField: React.FC<SelectFieldProps> = ({ label, tooltip, value, onChange, options = [], helper }) => {
   const [hoveredOption, setHoveredOption] = useState<string | null>(null);
   const tooltipMap: { [key: string]: string } = {
-    Service: "Use for service pages (e.g., Payment Gateway). JSON-LD: Service.",
-    Article: "For articles, blog posts, or educational content. JSON-LD: Article.",
-    WebPage: "For general pages (e.g., landing, home, contact). JSON-LD: WebPage.",
+    Service: "Gunakan untuk halaman layanan (mis. Gerbang Pembayaran). JSON-LD: Service.",
+    Article: "Untuk artikel, postingan blog, atau konten edukasi. JSON-LD: Article.",
+    WebPage: "Untuk halaman umum (mis. landing, beranda, kontak). JSON-LD: WebPage.",
   };
 
   return (
