@@ -276,7 +276,7 @@ export default function App() {
               {tests.map((t, i) => (
                 <li key={i} className="flex items-center justify-between rounded-lg border bg-gray-50 px-2 py-1.5">
                   <span className="text-gray-700">{t.name}</span>
-                  <span className={`font-bold ${t.pass ? "text-green-600" : "text-red-600"}`}>{t.pass ? "LULUS" : "GAGAL"}</span>
+                  <span className={`font-bold ${t.pass ? "text-green-600" : "text-red-600"}`}>{t.pass ? "PASS" : "GAGAL"}</span>
                 </li>
               ))}
             </ul>
