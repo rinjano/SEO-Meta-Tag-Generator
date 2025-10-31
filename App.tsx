@@ -211,11 +211,12 @@ export default function App() {
           <SelectField label="Tipe Halaman" tooltip="Menentukan skema JSON-LD dan og:type." value={pageType} onChange={setPageType} options={["WebPage", "Service", "Article"]} />
           <TextInput label="Brand" tooltip="Nama organisasi atau brand." value={brand} onChange={setBrand} placeholder="Nama Brand Anda"/>
           <TextInput label="Nama Layanan atau Halaman" tooltip="Nama utama dari layanan atau halaman." value={serviceName} onChange={setServiceName} placeholder="Nama Halaman" />
-          <TextInput label="Judul" tooltip="Judul SEO utama untuk halaman." value={title} onChange={setTitle} placeholder="Judul Utama Halaman | Nama Brand Anda" helper="Gunakan tanda hubung (-) sebagai pemisah agar mudah dibaca." />
-          <TextArea label="Deskripsi" tooltip="Deskripsi meta untuk hasil pencarian dan pratinjau sosial." value={description} onChange={setDescription} placeholder="Deskripsi singkat tentang halaman ini. Jelaskan apa yang akan ditemukan pengunjung di sini." rows={3} />
           <TextInput label="URL" tooltip="URL final dari halaman." value={url} onChange={setUrl} placeholder="https://www.domainanda.com/halaman"/>
-          <TextInput label="Canonical" tooltip="URL utama untuk mencegah konten duplikat." value={canonical} onChange={setCanonical} placeholder="https://www.domainanda.com/halaman"/>
-
+          <TextInput label="Canonical" tooltip="URL utama untuk mencegah konten duplikasi." value={canonical} onChange={setCanonical} placeholder="https://www.domainanda.com/halaman"/>
+          <TextInput label="Meta Title" tooltip="Judul SEO utama untuk halaman." value={title} onChange={setTitle} placeholder="Judul Utama Halaman | Nama Brand Anda" helper="Gunakan tanda hubung (-) sebagai pemisah agar mudah dibaca." />
+          <TextArea label="Meta Description" tooltip="Deskripsi meta untuk hasil pencarian dan pratinjau sosial." value={description} onChange={setDescription} placeholder="Deskripsi singkat tentang halaman ini. Jelaskan apa yang akan ditemukan pengunjung di sini." rows={3} />
+          <TextInput label="Meta Keyword (Opsional)" tooltip="Masih digunakan oleh beberapa crawler AI dan pencarian internal." value={keywords} onChange={setKeywords} placeholder="kata kunci 1, kata kunci 2, kata kunci 3" helper="Pisahkan dengan koma."/>
+          
           <fieldset className="rounded-lg border p-4">
             <legend className="px-1 text-sm font-medium">Kontrol Robot</legend>
             <div className="flex items-center gap-6 pt-2">
@@ -223,8 +224,6 @@ export default function App() {
               <Toggle label="follow" tooltip="Izinkan crawler untuk mengikuti tautan di halaman ini." checked={robotsFollow} onChange={setRobotsFollow} />
             </div>
           </fieldset>
-
-          <TextInput label="Kata Kunci Meta (Opsional)" tooltip="Masih digunakan oleh beberapa crawler AI dan pencarian internal." value={keywords} onChange={setKeywords} placeholder="kata kunci 1, kata kunci 2, kata kunci 3" helper="Pisahkan dengan koma."/>
 
           <fieldset className="space-y-2 rounded-lg border p-4">
             <legend className="px-1 text-sm font-medium flex items-center">
