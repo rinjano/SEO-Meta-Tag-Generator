@@ -213,7 +213,7 @@ export default function App() {
           <TextInput label="Nama Layanan atau Halaman" tooltip="Nama utama dari layanan atau halaman." value={serviceName} onChange={setServiceName} placeholder="Nama Halaman" />
           <TextInput label="URL" tooltip="URL final dari halaman." value={url} onChange={setUrl} placeholder="https://www.domainanda.com/halaman"/>
           <TextInput label="Canonical" tooltip="URL utama untuk mencegah konten duplikasi." value={canonical} onChange={setCanonical} placeholder="https://www.domainanda.com/halaman"/>
-          <TextInput label="Meta Title" tooltip="Judul SEO utama untuk halaman." value={title} onChange={setTitle} placeholder="Judul Utama Halaman | Nama Brand Anda" helper="Gunakan tanda hubung (-) sebagai pemisah agar mudah dibaca." />
+          <TextInput label="Meta Title" tooltip="Judul SEO utama untuk halaman." value={title} onChange={setTitle} placeholder="Judul Utama Halaman - Nama Brand Anda" helper="Gunakan tanda hubung (-) sebagai pemisah agar mudah dibaca." />
           <TextArea label="Meta Description" tooltip="Deskripsi meta untuk hasil pencarian dan pratinjau sosial." value={description} onChange={setDescription} placeholder="Deskripsi singkat tentang halaman ini. Jelaskan apa yang akan ditemukan pengunjung di sini." rows={3} />
           <TextInput label="Meta Keyword (Opsional)" tooltip="Masih digunakan oleh beberapa crawler AI dan pencarian internal." value={keywords} onChange={setKeywords} placeholder="kata kunci 1, kata kunci 2, kata kunci 3" helper="Pisahkan dengan koma."/>
           
