@@ -125,7 +125,7 @@ export default function App() {
 
     const processedParts = parts.map(part => {
       if (part.startsWith('&lt;script')) {
-        let highlightedPart = part.replace(/&lt;(\/?script)&gt;/g, '&lt;<span class="text-rose-400">$1</span>&gt;')
+        let highlightedPart = part.replace(/&lt;(\/?script)&gt;/g, '&lt;$1&gt;')
                                   .replace(/ ([\w-]+)=/g, ' <span class="text-sky-400">$1</span>=')
                                   .replace(/(&quot;application\/ld\+json&quot;)/g, '<span class="text-emerald-400">$1</span>');
         highlightedPart = highlightedPart.replace(/(&quot;[a-zA-Z@][\w@]*&quot;):/g, '<span class="text-violet-400">$1</span>:');
@@ -133,7 +133,7 @@ export default function App() {
         return highlightedPart;
       } else if (part) {
         let highlightedPart = part;
-        highlightedPart = highlightedPart.replace(/&lt;(\/?[\w-]+)/g, '&lt;<span class="text-rose-400">$1</span>');
+        highlightedPart = highlightedPart.replace(/&lt;(\/?[\w-]+)/g, '&lt;$1');
         highlightedPart = highlightedPart.replace(/ ([\w-]+)=/g, ' <span class="text-sky-400">$1</span>=');
         highlightedPart = highlightedPart.replace(/(&quot;.*?&quot;)/g, '<span class="text-emerald-400">$1</span>');
         return highlightedPart;
